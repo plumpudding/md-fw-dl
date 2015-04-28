@@ -21,7 +21,6 @@
   background-image: url("img/background.png");
   background-size: cover;
   background-position: center center;
-  height: 100%;
 }
 
 .headline {
@@ -29,14 +28,10 @@
   padding: 0 15px;
 }
 
-html {
-  overflow: hidden !important;
-}
-
 .md-card-image {
   -webkit-filter: drop-shadow(0px 5px 8px #222);
   filter: drop-shadow(0px 5px 8px #222);
-  width: 30%;
+  width: 20vw;
   margin: 30px;
   display: block;
   margin-left: auto;
@@ -44,8 +39,8 @@ html {
 }
 
 md-whiteframe {
-  width: 55%;
   overflow: auto !important;
+  width: 55%;
   height: 100%;
   background-color: rgba(255,255,255,0.8);
 }
@@ -62,7 +57,6 @@ md-select {
 
 .whiteframe-content {
   height: 100%;
-  vertical-align: middle;
 }
 
 @media (orientation: portrait) {
@@ -71,7 +65,7 @@ md-select {
   }
 
   .md-card-image {
-    width: 45%;
+    width: 55vw;
   }
 }
 

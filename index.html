@@ -31,9 +31,7 @@
     <script src="app.js"></script>
   </head>
 
-  <body ng-app="firmwareDownload">
-    <div class="main">
-      <div ng-controller="SelectCtrl" layout-align="center center" layout="column">
+  <body ng-app="firmwareDownload" class="main" ng-controller="SelectCtrl" layout-align="center center" layout="column">
         <md-whiteframe class="md-whiteframe-z2" layout layout-align="center center">
           <div class="whiteframe-content">
             <img src="img/logo.png" class="md-card-image" alt="Freifunk gl.wupper">
@@ -48,11 +46,9 @@
             <md-select placeholder="Bitte wähle einen Router" ng-model="selectedRouter">
               <md-option ng-repeat="router in routers" value="{{router.id}}">{{router.name}}</md-option>
             </md-select>
-            <md-button class="md-raised md-primary" ng-href="http://firmware.ff.petabyteboy.de/{{selectedRegion}}/stable/{{selectedMode}}/gluon-ffgl-{{selectedRegion}}-0.6.3-20150419-{{selectedRouter}}{{selectedMode=='sysupgrade'?'-sysupgrade.bin':'.bin'}}" ng-disabled="!(selectedRegion && selectedRouter)">Download Firmware</md-button>
+            <md-button class="md-raised md-primary" ng-href="/../{{selectedRegion}}/stable/{{selectedMode}}/gluon-ffgl-{{selectedRegion}}-0.6.3-20150419-{{selectedRouter}}{{selectedMode=='sysupgrade'?'-sysupgrade.bin':'.bin'}}" ng-disabled="!(selectedRegion && selectedRouter)" target="_self">Download Firmware</md-button>
           </div>
         </md-whiteframe>
-      </div>
-    </div>
   </body>
 
 </html>
