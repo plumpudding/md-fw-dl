@@ -16,7 +16,7 @@
     You should have received a copy of the GNU General Public License
     along with the Material Design Firmware Downloader.  If not, see <http://www.gnu.org/licenses/>. -->
 
-<html>
+<html ng-app="firmwareDownload" ng-controller="DownloadCtrl">
   <head>
     <title>Freifunk gl.wupper - Firmware Download</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -31,25 +31,36 @@
     <script src="app.js"></script>
   </head>
 
-  <body ng-app="firmwareDownload" class="main" ng-controller="SelectCtrl" layout-align="center center" layout="column">
+  <body class="main" layout-align="center center" layout="column">
         <md-whiteframe class="md-whiteframe-z2" layout layout-align="center center">
           <div class="whiteframe-content">
+
             <img src="img/logo.png" class="md-card-image" alt="Freifunk gl.wupper">
+            <!-- TODO: read domain name and fw version from config -->
             <h1 class="headline">Freifunk gl.wupper Firmware</h1>
             <h2 class="headline">Version 0.6.3 herunterladen</h2>
+
             <md-select ng-model="selectedMode">
               <md-option ng-repeat="mode in modes" value="{{mode.id}}">{{mode.name}}</md-option>
-            </md-select> 
-            <md-select placeholder="Bitte wähle einen Ort" ng-model="selectedRegion">
-              <md-option ng-repeat="region in regions" value="{{region.id}}">{{region.name}}</md-option>
             </md-select>
+
+            <!-- remove for domain-wide firmware -->
+            <md-select placeholder="Bitte wähle einen Ort" ng-model="selectedSite">
+              <md-option ng-repeat="site in sites" value="{{site.id}}">{{site.name}}</md-option>
+            </md-select>
+
+            <!-- remove to disable manufactorer sorting -->
             <md-select placeholder="Nach Hersteller sortieren" ng-model="selectedManu" ng-change="selectedRouter = null;">
               <md-option ng-repeat="manu in manus" value="{{manu}}">{{manu}}</md-option>
             </md-select>
+
             <md-select placeholder="Bitte wähle einen Router" ng-model="selectedRouter">
               <md-option ng-repeat="router in routers" ng-if="router.manu == selectedManu || selectedManu == null" value="{{router.id}}">{{selectedManu == null ? router.manu+' '+router.name : router.name}}</md-option>
             </md-select>
-            <md-button class="md-raised md-primary" ng-href="http://images.ff.petabyteboy.de/{{selectedRegion}}/stable/{{selectedMode}}/gluon-ffgl-{{selectedRegion}}-0.6.3-20150419-{{selectedManu|lowercase}}-{{selectedRouter}}{{selectedMode=='sysupgrade'?'-sysupgrade.bin':'.bin'}}" ng-disabled="!(selectedRegion && selectedRouter)" target="_self">Download Firmware</md-button>
+
+            <!-- TODO: read all the hardcoded stuff from config -->
+            <md-button class="md-raised md-primary" ng-href="http://images.ff.petabyteboy.de/{{selectedSite}}/stable/{{selectedMode}}/gluon-ffgl-{{selectedSite}}-0.6.3-20150419-{{selectedManu|lowercase}}-{{selectedRouter}}{{selectedMode=='sysupgrade'?'-sysupgrade.bin':'.bin'}}" ng-disabled="!(selectedSite && selectedRouter)" target="_self">Download Firmware</md-button>
+
           </div>
         </md-whiteframe>
   </body>

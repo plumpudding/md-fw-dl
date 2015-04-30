@@ -17,16 +17,21 @@
     along with the Material Design Firmware Downloader.  If not, see <http://www.gnu.org/licenses/>. */
 
 angular.module('firmwareDownload', ['ngMaterial'])
-  .config(function($locationProvider) {
-    $locationProvider.html5Mode({ enabled: true, requireBase: false });
-  })
-  .controller('SelectCtrl', function($scope, $location){
+  .controller('DownloadCtrl', function($scope, $location){
+
+    /*-----------------------------------*/
+    /* domain-specific configuration     */
+    /* TODO: add branches, versions, etc */
+    /* TODO: move to a seperate file     */
+    /*-----------------------------------*/
+
     $scope.modes = [
       { id: "factory", name: "Neuinstallation der Freifunk Firmware" },
       { id: "sysupgrade", name: "Update der Freifunk Firmware" }
     ];
-    $scope.selectedMode = "factory";
-    $scope.regions = [
+
+    //needed for community-specific firmwares
+    $scope.sites = [
       { id: "bcd", name: "Burscheid" },
       { id: "bgl", name: "Bergisch Gladbach" },
       { id: "kut", name: "Kürten" },
@@ -35,6 +40,8 @@ angular.module('firmwareDownload', ['ngMaterial'])
       { id: "ovr", name: "Overath" },
       { id: "rrh", name: "Rösrath" },
     ];
+
+    //router list for gluon v2014.04
     $scope.manus = [
       "Buffalo",
       "D-Link",
@@ -42,6 +49,7 @@ angular.module('firmwareDownload', ['ngMaterial'])
       "TP-Link",
       "Ubiquiti"
     ];
+
     $scope.routers = [
       { id: "wzr-hp-ag300h-wzr-600dhp", name: "WZR 600DHP", manu: "Buffalo" },
       { id: "wzr-hp-g450h", name: "WZR HP G450H", manu: "Buffalo" },
@@ -89,7 +97,21 @@ angular.module('firmwareDownload', ['ngMaterial'])
       { id: "unifi", name: "UniFi", manu: "Ubiquiti" },
       { id: "unifiap-outdoor", name: "UniFi AP-Outdoor", manu: "Ubiquiti" }
     ];
+
+    /*---------------*/
+    /* semantic code */
+    /*---------------*/
+
+    //select factory by default
+    $scope.selectedMode = "factory"; 
+
+    //read selection from url parameters
     if($location.search().mode != null) { $scope.selectedMode = $location.search().mode; }
-    if($location.search().region != null) { $scope.selectedRegion = $location.search().region; }
+    if($location.search().site != null) { $scope.selectedSite = $location.search().site; }
     if($location.search().router != null) { $scope.selectedRouter = $location.search().router; }
+
+  })
+  //make parameters work without #! in the url
+  .config(function($locationProvider) {
+    $locationProvider.html5Mode({ enabled: true, requireBase: false });
   });
