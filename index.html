@@ -43,10 +43,13 @@
             <md-select placeholder="Bitte wähle einen Ort" ng-model="selectedRegion">
               <md-option ng-repeat="region in regions" value="{{region.id}}">{{region.name}}</md-option>
             </md-select>
-            <md-select placeholder="Bitte wähle einen Router" ng-model="selectedRouter">
-              <md-option ng-repeat="router in routers" value="{{router.id}}">{{router.name}}</md-option>
+            <md-select placeholder="Nach Hersteller sortieren" ng-model="selectedManu" ng-change="selectedRouter = null;">
+              <md-option ng-repeat="manu in manus" value="{{manu}}">{{manu}}</md-option>
             </md-select>
-            <md-button class="md-raised md-primary" ng-href="/../{{selectedRegion}}/stable/{{selectedMode}}/gluon-ffgl-{{selectedRegion}}-0.6.3-20150419-{{selectedRouter}}{{selectedMode=='sysupgrade'?'-sysupgrade.bin':'.bin'}}" ng-disabled="!(selectedRegion && selectedRouter)" target="_self">Download Firmware</md-button>
+            <md-select placeholder="Bitte wähle einen Router" ng-model="selectedRouter">
+              <md-option ng-repeat="router in routers" ng-if="router.manu == selectedManu || selectedManu == null" value="{{router.id}}">{{selectedManu == null ? router.manu+' '+router.name : router.name}}</md-option>
+            </md-select>
+            <md-button class="md-raised md-primary" ng-href="http://images.ff.petabyteboy.de/{{selectedRegion}}/stable/{{selectedMode}}/gluon-ffgl-{{selectedRegion}}-0.6.3-20150419-{{selectedManu|lowercase}}-{{selectedRouter}}{{selectedMode=='sysupgrade'?'-sysupgrade.bin':'.bin'}}" ng-disabled="!(selectedRegion && selectedRouter)" target="_self">Download Firmware</md-button>
           </div>
         </md-whiteframe>
   </body>
