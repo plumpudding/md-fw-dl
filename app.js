@@ -107,7 +107,7 @@ angular.module('firmwareDownload', ['ngMaterial'])
 
     //read selection from url parameters
     if($location.search().mode != null) { $scope.selectedMode = $location.search().mode; }
-    if($location.search().site != null) { $scope.selectedSite = $location.search().site; }
+    if($location.search().region != null) { $scope.selectedSite = $location.search().region; }
     if($location.search().router != null) { $scope.selectedRouter = $location.search().router; }
 
   })
