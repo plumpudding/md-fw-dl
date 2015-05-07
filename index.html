@@ -38,7 +38,7 @@
             <img src="img/logo.png" class="md-card-image" alt="Freifunk gl.wupper">
             <!-- TODO: read domain name and fw version from config -->
             <h1 class="headline">Freifunk gl.wupper Firmware</h1>
-            <h2 class="headline">Version 0.6.3 herunterladen</h2>
+            <h2 class="headline">Version 0.6.4 herunterladen</h2>
 
             <md-select ng-model="selectedMode">
               <md-option ng-repeat="mode in modes" value="{{mode.id}}">{{mode.name}}</md-option>
@@ -59,7 +59,7 @@
             </md-select>
 
             <!-- TODO: read all the hardcoded stuff from config -->
-            <md-button class="md-raised md-primary" ng-href="http://images.ff.petabyteboy.de/{{selectedSite}}/stable/{{selectedMode}}/gluon-ffgl-{{selectedSite}}-0.6.3-20150419-{{selectedManu|lowercase}}-{{selectedRouter}}{{selectedMode=='sysupgrade'?'-sysupgrade.bin':'.bin'}}" ng-disabled="!(selectedSite && selectedRouter)" target="_self">Download Firmware</md-button>
+            <md-button class="md-raised md-primary" ng-href="http://images.ff.petabyteboy.de/{{selectedSite}}/stable/{{selectedMode}}/gluon-ffgl-{{selectedSite}}-0.6.4-20150504-{{selectedManu|lowercase}}-{{selectedRouter}}{{selectedMode=='sysupgrade'?'-sysupgrade.bin':'.bin'}}" ng-disabled="!(selectedSite && selectedRouter)" target="_self">Download Firmware</md-button>
 
           </div>
         </md-whiteframe>
