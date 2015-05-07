@@ -69,3 +69,14 @@ md-select {
   }
 }
 
+.license {
+  margin-top 60px;
+  -webkit-margin-before: 15px;
+  -webkit-margin-after: 15px;
+  -webkit-margin-start: 60px;
+  -webkit-margin-end: 60px;
+  -moz-margin-before: 15px;
+  -moz-margin-after: 15px;
+  -moz-margin-start: 60px;
+  -moz-margin-end: 60px;
+}
