@@ -42,22 +42,22 @@
         <h1 class="headline">Freifunk gl.wupper Firmware</h1>
         <h2 class="headline">Version {{version.shortname}} herunterladen</h2>
 
-        <md-select ng-model="selectedMode">
+        <md-select ng-model="selectedMode" ng-show="modes">
           <md-option ng-repeat="mode in modes" value="{{mode.id}}">{{mode.name}}</md-option>
         </md-select>
 
         <!-- remove for domain-wide firmware -->
-        <md-select placeholder="Bitte wähle einen Ort" ng-model="selectedSite">
+        <md-select placeholder="Bitte wähle einen Ort" ng-model="selectedSite" ng-show="sites">
           <md-option ng-repeat="site in sites" value="{{site.id}}">{{site.name}}</md-option>
         </md-select>
 
         <!-- remove to disable manufactorer sorting -->
-        <md-select placeholder="Nach Hersteller sortieren" ng-model="selectedManu" ng-change="selectedRouter = null;">
-          <md-option ng-repeat="manu in manus" value="{{manu}}">{{manu}}</md-option>
+        <md-select placeholder="Nach Hersteller sortieren" ng-model="selectedManufacturer" ng-change="selectedRouter = null;" ng-show="manufacturers">
+          <md-option ng-repeat="manufacturer in manufacturers" value="{{manufacturer}}">{{manufacturer}}</md-option>
         </md-select>
 
-        <md-select placeholder="Bitte wähle einen Router" ng-model="selectedRouter">
-          <md-option ng-repeat="router in routers" ng-if="router.manu == selectedManu || selectedManu == null" value="{{router.id}}">{{selectedManu == null ? router.manu+' '+router.name : router.name}}</md-option>
+        <md-select placeholder="Bitte wähle einen Router" ng-model="selectedRouter" ng-show="routers">
+          <md-option ng-repeat="router in routers" ng-if="router.manufacturer == selectedManufacturer || selectedManufacturer == null" value="{{router.id}}">{{selectedManufacturer == null ? router.manufacturer+' '+router.name : router.name}}</md-option>
         </md-select>
 
         <!-- TODO: read all the hardcoded stuff from config -->

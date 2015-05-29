@@ -23,7 +23,7 @@ angular.module('firmwareDownload', ['ngMaterial'])
 
     $scope.sites = sites;
 
-    $scope.manus = manufacturers;
+    $scope.manufacturers = manufacturers;
 
     $scope.routers = routers;
 
