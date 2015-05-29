@@ -84,10 +84,10 @@ var routers = [
   { id: "tl-wr1043n-nd-v2", name: "TL WR 1043 N/ND Ver:2", manu: "TP-Link" },
   { id: "tl-wr2543n-nd-v1", name: "TL WR 2543 N/ND Ver:1", manu: "TP-Link" },
   { id: "bullet-m", name: "Bullet M", manu: "Ubiquiti" },
-  { id: "loco-m-xw", name: "Loco M-XW", manu: "Ubiquiti" }
-  { id: "nanostation-m-xw", name: "Nanostation M-XW", manu: "Ubiquiti" }
+  { id: "loco-m-xw", name: "Loco M-XW", manu: "Ubiquiti" },
+  { id: "nanostation-m-xw", name: "Nanostation M-XW", manu: "Ubiquiti" },
   { id: "nanostation-m", name: "Nanostation M", manu: "Ubiquiti" },	 
-  { id: "unifi-ap-pro", name: "UniFi AP-Pro", manu: "Ubiquiti" }
+  { id: "unifi-ap-pro", name: "UniFi AP-Pro", manu: "Ubiquiti" },
   { id: "unifi", name: "UniFi", manu: "Ubiquiti" },
   { id: "unifiap-outdoor", name: "UniFi AP-Outdoor", manu: "Ubiquiti" }
 ];
