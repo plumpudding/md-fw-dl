@@ -17,7 +17,7 @@
     along with the Material Design Firmware Downloader.  If not, see <http://www.gnu.org/licenses/>. */
 
 angular.module('firmwareDownload', ['ngMaterial'])
-  .controller('DownloadCtrl', function($scope, $location){
+  .controller('DownloadCtrl', function($scope, $location, $interpolate){
 
     $scope.modes = modes;
 
@@ -27,6 +27,12 @@ angular.module('firmwareDownload', ['ngMaterial'])
 
     $scope.routers = routers;
 
+    $scope.version = version;
+
+    $scope.interpolate = function (value) {
+        return $interpolate(value)($scope);
+    };
+
     //select factory by default
     $scope.selectedMode = "factory"; 
 
@@ -34,7 +40,6 @@ angular.module('firmwareDownload', ['ngMaterial'])
     if($location.search().mode != null) { $scope.selectedMode = $location.search().mode; }
     if($location.search().region != null) { $scope.selectedSite = $location.search().region; }
     if($location.search().router != null) { $scope.selectedRouter = $location.search().router; }
-
   })
   //make parameters work without #! in the url
   .config(function($locationProvider) {
