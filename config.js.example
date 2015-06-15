@@ -6,7 +6,7 @@ var modes = [
 var sites = [
   { id: "bcd", name: "Burscheid" },
   { id: "bgl", name: "Bergisch Gladbach" },
-  { id: "bgl", name: "Gelsenkirchen" },
+  { id: "gek", name: "Gelsenkirchen" },
   { id: "kut", name: "Kürten" },
   { id: "lln", name: "Leichlingen" },
   { id: "ode", name: "Odenthal" },
