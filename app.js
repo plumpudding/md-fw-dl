@@ -28,6 +28,10 @@ angular.module('firmwareDownload', ['ngMaterial'])
     $scope.routers = routers;
 
     $scope.version = version;
+    
+    $scope.splitString = function (string, nb) {
+        return string.substring(0,nb);
+    };
 
     $scope.interpolate = function (value) {
         return $interpolate(value)($scope);
