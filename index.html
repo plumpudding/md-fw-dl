@@ -18,7 +18,7 @@
 
 <html ng-app="firmwareDownload" ng-controller="DownloadCtrl">
   <head>
-    <title>Freifunk gl.wupper - Firmware Download</title>
+    <title>Freifunk Firmware Download</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="style.css"/>
@@ -38,9 +38,8 @@
       <div class="whiteframe-content">
 
         <img src="img/logo.png" class="md-card-image" alt="Freifunk gl.wupper">
-        <!-- TODO: read domain name from config -->
-        <h1 class="headline">Freifunk gl.wupper Firmware</h1>
-        <h2 class="headline">Version {{config.version}} herunterladen</h2>
+        <h1 class="headline">Freifunk<a ng-show="config.name"> {{config.name}}</a> Firmware</h1>
+        <h2 class="headline" ng-show="config.version">Version {{config.version}} herunterladen</h2>
 
         <md-select ng-model="selectedMode" ng-show="config.modes">
           <md-option ng-repeat="(key, value) in config.modes" value="{{key}}">{{value}}</md-option>

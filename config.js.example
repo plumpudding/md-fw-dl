@@ -94,6 +94,8 @@ routers: {
 
 version: "0.7.2",
 
+name: "gl.wupper",
+
 url: "http://images.ff.petabyteboy.de/ar71xx-generic/{{parse(selectedSite).id}}/stable/{{selectedMode}}/gluon-ffgl-{{parse(selectedSite).id}}-{{parse(selectedSite).version}}-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade.':'.'}}{{parse(selectedRouter).manufacturer=='Netgear' && selectedMode=='factory' ? 'img': 'bin'}}"
 
 }
