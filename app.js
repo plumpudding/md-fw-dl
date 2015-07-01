@@ -17,7 +17,7 @@
     along with the Material Design Firmware Downloader.  If not, see <http://www.gnu.org/licenses/>. */
 
 angular.module('firmwareDownload', ['ngMaterial'])
-  .controller('DownloadCtrl', function($scope, $location, $interpolate){
+  .controller('DownloadCtrl', function($scope, $location, $interpolate, $filter){
 
     $scope.config = config;
 
@@ -39,15 +39,16 @@ angular.module('firmwareDownload', ['ngMaterial'])
         } catch (error) {}
     };
 
-    //console.log(JSON.parse($scope.selectedSite));
 
     //select factory by default
     $scope.selectedMode = "factory";
 
     //read selection from url parameters
-    if($location.search().mode != null) { $scope.selectedMode = config.sites[$location.search().mode]; }
-    if($location.search().region != null) { $scope.selectedSite = $location.search().region; }
-    if($location.search().router != null) { $scope.selectedRouter = $location.search().router; }
+    if($location.search().mode != null) { $scope.selectedMode = $location.search().mode; }
+    if($location.search().region != null) { $scope.selectedSite = $filter('json')(config.sites[$location.search().region]); }
+    if($location.search().manufacturer != null) { $scope.selectedManufacturer = $filter('json')(config.manufacturers[$location.search().manufacturer]); }
+    if($location.search().router != null) { $scope.selectedRouter = $filter('json')(config.routers[$location.search().router]); }
+    console.log($scope.selectedRouter);
   })
   //make parameters work without #! in the url
   .config(function($locationProvider) {
