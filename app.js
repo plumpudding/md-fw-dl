@@ -19,29 +19,33 @@
 angular.module('firmwareDownload', ['ngMaterial'])
   .controller('DownloadCtrl', function($scope, $location, $interpolate){
 
-    $scope.modes = modes;
+    $scope.config = config;
 
-    $scope.sites = sites;
-
-    $scope.manufacturers = manufacturers;
-
-    $scope.routers = routers;
-
-    $scope.version = version;
+    $scope.parse = function (string) {
+        try {
+            return JSON.parse(string);
+        } catch (error) {}
+    };
     
     $scope.splitString = function (string, nb) {
         return string.substring(0,nb);
     };
 
     $scope.interpolate = function (value) {
-        return $interpolate(value)($scope);
+        try {
+            if (typeof(value) != undefined) {
+                return $interpolate(value)($scope);
+            }
+        } catch (error) {}
     };
 
+    //console.log(JSON.parse($scope.selectedSite));
+
     //select factory by default
-    $scope.selectedMode = "factory"; 
+    $scope.selectedMode = "factory";
 
     //read selection from url parameters
-    if($location.search().mode != null) { $scope.selectedMode = $location.search().mode; }
+    if($location.search().mode != null) { $scope.selectedMode = config.sites[$location.search().mode]; }
     if($location.search().region != null) { $scope.selectedSite = $location.search().region; }
     if($location.search().router != null) { $scope.selectedRouter = $location.search().router; }
   })
