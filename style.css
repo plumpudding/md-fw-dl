@@ -21,6 +21,7 @@
   background-image: url("img/background.png");
   background-size: cover;
   background-position: center center;
+  background-color: #f0f3f5;
 }
 
 .headline {
@@ -31,7 +32,6 @@
 .md-card-image {
   -webkit-filter: drop-shadow(0px 5px 8px #222);
   filter: drop-shadow(0px 5px 8px #222);
-  width: 20vw;
   margin: 30px;
   display: block;
   margin-left: auto;
