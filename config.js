@@ -1,19 +1,19 @@
 var config = {
 
-version: "2015.1.2+191",
+version: "2015.1.2%2b0.0.2",
 
 modes: {
   "factory": "Erstinstallation (Neu gekaufter Router)",
   "sysupgrade": "Manuelles Update eines bestehenden Freifunk-Routers"
 },
 
-sites{
-"domaene01" : {id: "domaene01",name:"Muenster Stadt"},
-"domaene02" : {id: "domaene02",name:"Kreis Coesfeld"},
-"domaene03" : {id: "domaene03",name:"Kreis Steinfurt West"},
-"domaene04" : {id: "domaene04",name:"Kreis Steinfurt Ost"},
-"domaene05" : {id: "domaene05",name:"Muenster Sued"},
-"domaene06" : {id: "domaene06",name:"Westmuensterland"},
+sites:{
+"domaene01" : {id: "domaene01",short:"d01",name:"Muenster Stadt"},
+"domaene02" : {id: "domaene02",short:"d02",name:"Kreis Coesfeld"},
+"domaene03" : {id: "domaene03",short:"d03",name:"Kreis Steinfurt West"},
+"domaene04" : {id: "domaene04",short:"d04",name:"Kreis Steinfurt Ost"},
+"domaene05" : {id: "domaene05",short:"d05",name:"Muenster Sued"},
+"domaene06" : {id: "domaene06",short:"d06",name:"Westmuensterland"},
 },
 
 //router list for gluon v2015.1
@@ -99,5 +99,5 @@ routers: {
 
 name: "Münsterland",
 
-url: "http://firmware.freifunk-muensterland.org/{{sites}}/stable/{{selectedMode}}/gluon-ffms-v{{config.version}}-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade.':'.'}}{{splitString(selectedRouter,7)=='netgear' && selectedMode=='factory' ? 'img' : 'bin'}}"
+url: "http://firmware.freifunk-muensterland.org/{{parse(selectedSite).id}}/stable/{{selectedMode}}/gluon-ffms{{parse(selectedSite).short}}-v{{config.version}}-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade.':'.'}}{{splitString(selectedRouter,7)=='netgear' && selectedMode=='factory' ? 'img' : 'bin'}}"
 }

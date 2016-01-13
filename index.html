@@ -44,7 +44,11 @@
         <md-select ng-model="selectedMode" ng-show="config.modes">
           <md-option ng-repeat="(key, value) in config.modes" value="{{key}}">{{value}}</md-option>
         </md-select>
-	
+
+          <md-select placeholder="Bitte wähle einen Ort" ng-model="selectedSite" ng-show="config.sites">
+              <md-option ng-repeat="(key, value) in config.sites" value="{{value | json}}">{{value.name}}</md-option>
+          </md-select>
+
         <md-select placeholder="Hersteller" ng-model="selectedManufacturer" ng-change="selectedRouter = null;" ng-show="config.manufacturers">
           <md-option ng-repeat="(key, value) in config.manufacturers" value="{{value | json}}">{{value.name}}</md-option>
         </md-select>
