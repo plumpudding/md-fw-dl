@@ -7,6 +7,15 @@ modes: {
   "sysupgrade": "Manuelles Update eines bestehenden Freifunk-Routers"
 },
 
+sites{
+"domaene01" : {id: "domaene01",name:"Muenster Stadt"},
+"domaene02" : {id: "domaene02",name:"Kreis Coesfeld"},
+"domaene03" : {id: "domaene03",name:"Kreis Steinfurt West"},
+"domaene04" : {id: "domaene04",name:"Kreis Steinfurt Ost"},
+"domaene05" : {id: "domaene05",name:"Muenster Sued"},
+"domaene06" : {id: "domaene06",name:"Westmuensterland"},
+},
+
 //router list for gluon v2015.1
 manufacturers: {
   "tp-link": {id: "tp-link", name: "TP-Link"},
@@ -90,5 +99,5 @@ routers: {
 
 name: "Münsterland",
 
-url: "https://freifunk-muensterland.de/site-ffms/stable/{{selectedMode}}/gluon-ffms-v{{config.version}}-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade.':'.'}}{{splitString(selectedRouter,7)=='netgear' && selectedMode=='factory' ? 'img' : 'bin'}}"
+url: "http://firmware.freifunk-muensterland.org/{{sites}}/stable/{{selectedMode}}/gluon-ffms-v{{config.version}}-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade.':'.'}}{{splitString(selectedRouter,7)=='netgear' && selectedMode=='factory' ? 'img' : 'bin'}}"
 }
