@@ -8,23 +8,24 @@ modes: {
 },
 
 sites:{
-"domaene01" : {id: "domaene01",short:"d01",name:"Muenster Stadt", version:"0.1.3"},
+"domaene01" : {id: "domaene01",short:"d01",name:"Münster Stadt", version:"0.1.3"},
 "domaene02" : {id: "domaene02",short:"d02",name:"Kreis Coesfeld", version:"0.0.3"},
 "domaene03" : {id: "domaene03",short:"d03",name:"Kreis Steinfurt West", version:"0.0.1"},
 "domaene04" : {id: "domaene04",short:"d04",name:"Kreis Steinfurt Ost", version:"0.0.2"},
-"domaene05" : {id: "domaene05",short:"d05",name:"Muenster Sued", version:"0.0.2"},
-"domaene06" : {id: "domaene06",short:"d06",name:"Westmuensterland", version:"0.0.2"},
+"domaene05" : {id: "domaene05",short:"d05",name:"Münster Süd", version:"0.0.2"},
+"domaene06" : {id: "domaene06",short:"d06",name:"Westmünsterland", version:"0.0.2"},
 },
 
 //router list for gluon v2015.1
 manufacturers: {
-  "tp-link": {id: "tp-link", name: "TP-Link"},
-  "buffalo": {id: "buffalo", name: "Buffalo"},
-  "d-link": {id: "d-link", name: "D-Link"},
-  "gl-inet": {id: "gl-inet", name: "GL-Inet"},
-  "linksys": {id: "linksys", name: "Linksys"},
-  "ubiquiti": {id: "ubiquiti", name: "Ubiquiti"},
-  "netgear": {id: "netgear", name: "Netgear"}
+  "0tp-link": {id: "tp-link", name: "TP-Link"},
+  "1ubiquiti": {id: "ubiquiti", name: "Ubiquiti"},
+  "2buffalo": {id: "buffalo", name: "Buffalo"},
+  "3d-link": {id: "d-link", name: "D-Link"},
+  "4gl-inet": {id: "gl-inet", name: "GL-Inet"},
+  "5linksys": {id: "linksys", name: "Linksys"},
+  "6netgear": {id: "netgear", name: "Netgear"},
+ "7x86":{id:"x86",name:"x86"}
 },
 
 routers: {
@@ -43,8 +44,6 @@ routers: {
  "netgear-wndrmacv2": { id: "netgear-wndrmacv2", name: "WNDRMAC Ver:2", manufacturer: "Netgear" },
  "tp-link-cpe210-v1.0": { id: "tp-link-cpe210-v1.0", name: "CPE210 Ver:1", manufacturer: "TP-Link" },
  "tp-link-cpe220-v1.0": { id: "tp-link-cpe220-v1.0", name: "CPE220 Ver:1", manufacturer: "TP-Link" },
- "tp-link-cpe510-v1.0": { id: "tp-link-cpe510-v1.0", name: "CPE510 Ver:1", manufacturer: "TP-Link" },
- "tp-link-cpe520-v1.0": { id: "tp-link-cpe520-v1.0", name: "CPE520 Ver:1", manufacturer: "TP-Link" },
  "tp-link-tl-mr3020-v1": { id: "tp-link-tl-mr3020-v1", name: "TL-MR3020 Ver:1", manufacturer: "TP-Link" },
  "tp-link-tl-mr3040-v1": { id: "tp-link-tl-mr3040-v1", name: "TL-MR3040 Ver:1", manufacturer: "TP-Link" },
  "tp-link-tl-mr3040-v2": { id: "tp-link-tl-mr3040-v2", name: "TL-MR3040 Ver:2", manufacturer: "TP-Link" },
@@ -88,13 +87,15 @@ routers: {
  "tp-link-tl-wr1043n-nd-v1": { id: "tp-link-tl-wr1043n-nd-v1", name: "TL-WR1043N/ND Ver:1", manufacturer: "TP-Link" },
  "tp-link-tl-wr1043n-nd-v2": { id: "tp-link-tl-wr1043n-nd-v2", name: "TL-WR1043N/ND Ver:2", manufacturer: "TP-Link" },
  "tp-link-tl-wr2543n-nd-v1": { id: "tp-link-tl-wr2543n-nd-v1", name: "TL-WR2543N/ND Ver:1", manufacturer: "TP-Link" },
- "ubiquiti-bullet-m": { id: "ubiquiti-bullet-m", name: "Bullet M", manufacturer: "Ubiquiti" },
- "ubiquiti-loco-m-xw": { id: "ubiquiti-loco-m-xw", name: "Loco M XW", manufacturer: "Ubiquiti" },
+ "ubiquiti-bullet-m":        { id: "ubiquiti-bullet-m", name: "Bullet M", manufacturer: "Ubiquiti" },
+ "ubiquiti-loco-m-xw":      { id: "ubiquiti-loco-m-xw", name: "Loco M XW", manufacturer: "Ubiquiti" },
  "ubiquiti-nanostation-m-xw": { id: "ubiquiti-nanostation-m-xw", name: "Nanostation M XW", manufacturer: "Ubiquiti" },
- "ubiquiti-nanostation-m": { id: "ubiquiti-nanostation-m", name: "Nanostation M", manufacturer: "Ubiquiti" },	 
+ "ubiquiti-nanostation-m": { id: "ubiquiti-nanostation-m", name: "Nanostation M", manufacturer: "Ubiquiti" },
+ "ubiquiti-picostation-m":{id:"ubiquiti-picostation-m",name:"Picostation M",manufacturer:"Ubiquiti"},
+ "ubiquiti-rocket-m":{id:"ubiquiti-rocket-m",name:"Rocket M",manufacturer:"Ubiquiti"},
  "ubiquiti-unifi-ap-pro": { id: "ubiquiti-unifi-ap-pro", name: "UniFi AP Pro", manufacturer: "Ubiquiti" },
  "ubiquiti-unifi": { id: "ubiquiti-unifi", name: "UniFi", manufacturer: "Ubiquiti" },
- "ubiquiti-unifiap-outdoor": { id: "ubiquiti-unifiap-outdoor", name: "UniFi AP Outdoor", manufacturer: "Ubiquiti" }
+ "ubiquiti-unifiap-outdoor": { id: "ubiquiti-unifiap-outdoor", name: "UniFi AP Outdoor", manufacturer: "Ubiquiti" },
 },
 
 name: "Münsterland",
