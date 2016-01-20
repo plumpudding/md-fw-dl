@@ -96,9 +96,27 @@ routers: {
  "ubiquiti-unifi-ap-pro": { id: "ubiquiti-unifi-ap-pro", name: "UniFi AP Pro", manufacturer: "Ubiquiti" },
  "ubiquiti-unifi": { id: "ubiquiti-unifi", name: "UniFi", manufacturer: "Ubiquiti" },
  "ubiquiti-unifiap-outdoor": { id: "ubiquiti-unifiap-outdoor", name: "UniFi AP Outdoor", manufacturer: "Ubiquiti" },
+ "x86-vmware":{id:"x86-vmware.vmdk",name:"vmware",manufacturer:"x86"},
+ "x86-virtualbox":{id:"x86-virtualbox.vdi",name:"virtualbox",manufacturer:"x86"},
+ "x86-kvm":{id:"x86-kvm.img.gz",name:"kvm",manufacturer:"x86"},
+ "x86-generic":{id:"x86-generic.img.gz",name:"generic",manufacturer:"x86"},
 },
 
 name: "Münsterland",
 
-url: "http://firmware.freifunk-muensterland.org/{{parse(selectedSite).id}}/stable/{{selectedMode}}/gluon-ffms{{parse(selectedSite).short}}-v{{config.version}}+{{parse(selectedSite).version}}-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade.':'.'}}{{splitString(selectedRouter,7)=='netgear' && selectedMode=='factory' ? 'img' : 'bin'}}"
+buildFirmwareExtension: function() {
+ if (splitString(selectedRouter, 7) == 'netgear' && selectedMode == 'factory') {
+    if (selectedManufacturer != 'x86') {
+     return '.bin';
+    }
+  else {
+     return '.img';
+    }
+ }
+},
+
+
+url: "http://firmware.freifunk-muensterland.org/{{parse(selectedSite).id}}/stable/{{selectedMode}}/gluon-ffms{{parse(selectedSite).short}}-v" +
+"{{config.version}}+{{parse(selectedSite).version}}-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade':''}}" +
+"{{config.buildFirmwareExtension}}"
 }

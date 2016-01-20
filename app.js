@@ -21,6 +21,7 @@ angular.module('firmwareDownload', ['ngMaterial'])
 
     $scope.config = config;
 
+
     $scope.parse = function (string) {
         try {
             return JSON.parse(string);
@@ -48,7 +49,6 @@ angular.module('firmwareDownload', ['ngMaterial'])
     if($location.search().region != null) { $scope.selectedSite = $filter('json')(config.sites[$location.search().region]); }
     if($location.search().manufacturer != null) { $scope.selectedManufacturer = $filter('json')(config.manufacturers[$location.search().manufacturer]); }
     if($location.search().router != null) { $scope.selectedRouter = $filter('json')(config.routers[$location.search().router]); }
-    console.log($scope.selectedRouter);
   })
   //make parameters work without #! in the url
   .config(function($locationProvider) {
