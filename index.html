@@ -57,7 +57,7 @@
           <md-option ng-repeat="(key, value) in config.routers" ng-if="selectedManufacturer == null || value.manufacturer == parse(selectedManufacturer).name" value="{{value | json}}">{{selectedManufacturer == null ? value.manufacturer+' '+value.name : value.name}}</md-option>
         </md-select>
 
-        <md-button class="md-raised md-primary" ng-href="{{ interpolate(config.url) }}" ng-disabled="!(selectedRouter)" target="_self">Download Firmware</md-button>
+        <md-button class="md-raised md-primary" ng-href="{{ buildFirmwareUrl() }}" ng-disabled="!(selectedRouter)" target="_self">Download Firmware</md-button>
 
         <p class=license>Copyright 2015 PetaByteBoy | <a href="copying.html" target="_self">License</a></p>
 

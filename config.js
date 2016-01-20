@@ -8,7 +8,7 @@ modes: {
 },
 
 sites:{
-"domaene01" : {id: "domaene01",short:"d01",name:"Münster Stadt", version:"0.1.3"},
+"domaene01" : {id: "domaene01",short:"d01",name:"Münster Stadt", version:"0.1.2"},
 "domaene02" : {id: "domaene02",short:"d02",name:"Kreis Coesfeld", version:"0.0.3"},
 "domaene03" : {id: "domaene03",short:"d03",name:"Kreis Steinfurt West", version:"0.0.1"},
 "domaene04" : {id: "domaene04",short:"d04",name:"Kreis Steinfurt Ost", version:"0.0.2"},
@@ -25,7 +25,7 @@ manufacturers: {
   "4gl-inet": {id: "gl-inet", name: "GL-Inet"},
   "5linksys": {id: "linksys", name: "Linksys"},
   "6netgear": {id: "netgear", name: "Netgear"},
- "7x86":{id:"x86",name:"x86"}
+  "7x86":{id:"x86",name:"x86"}
 },
 
 routers: {
@@ -104,19 +104,7 @@ routers: {
 
 name: "Münsterland",
 
-buildFirmwareExtension: function() {
- if (splitString(selectedRouter, 7) == 'netgear' && selectedMode == 'factory') {
-    if (selectedManufacturer != 'x86') {
-     return '.bin';
-    }
-  else {
-     return '.img';
-    }
- }
-},
-
 
 url: "http://firmware.freifunk-muensterland.org/{{parse(selectedSite).id}}/stable/{{selectedMode}}/gluon-ffms{{parse(selectedSite).short}}-v" +
-"{{config.version}}+{{parse(selectedSite).version}}-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade':''}}" +
-"{{config.buildFirmwareExtension}}"
+"{{config.version}}+{{parse(selectedSite).version}}-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade':''}}"
 }

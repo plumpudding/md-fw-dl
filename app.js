@@ -40,6 +40,24 @@ angular.module('firmwareDownload', ['ngMaterial'])
         } catch (error) {}
     };
 
+    $scope.buildFirmwareUrl = function() {
+        var url = $scope.interpolate(config.url);
+        var manufacturer = angular.fromJson($scope.selectedManufacturer);
+        if (manufacturer == null) {
+            return url;
+        }
+
+        if (manufacturer.name == config.manufacturers['6netgear'].name && $scope.selectedMode == 'factory') {
+            url += '.img';
+        } else if (manufacturer.name == config.manufacturers['7x86'].name) {
+            url += '';
+        } else {
+            url += '.bin';
+        }
+
+      return url;
+    };
+
 
     //select factory by default
     $scope.selectedMode = "factory";
