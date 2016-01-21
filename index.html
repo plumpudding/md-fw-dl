@@ -22,6 +22,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="lib/angular-material.min.css"/>
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-animate.min.js"></script>
@@ -49,6 +50,13 @@
         <md-select placeholder="Bitte wähle einen Ort" ng-model="selectedSite" ng-show="config.sites">
             <md-option ng-repeat="(key, value) in config.sites" value="{{value | json}}">{{value.name}}</md-option>
         </md-select>
+
+        <button class="md-no-style" type="button" ng-click="help_location = !help_location" aria-label="Hilfe">
+            <i class="material-icons prefix">help_outline</i>
+        </button>
+
+        <iframe data-ng-if="help_location" width="100%" height="400px" frameborder="0"
+                src="https://umap.openstreetmap.fr/de/map/ffms-domanen_62931?scaleControl=false&amp;miniMap=false&amp;scrollWheelZoom=false&amp;zoomControl=true&amp;allowEdit=false&amp;moreControl=false&amp;datalayersControl=false&amp;onLoadPanel=undefined&amp;captionBar=false&amp;datalayers=151396"></iframe>
 
         <md-select placeholder="Hersteller" ng-model="selectedManufacturer" ng-change="selectedRouter = null;" ng-show="config.manufacturers">
             <md-option ng-repeat="(key, value) in config.manufacturers" value="{{value | json}}">{{value.name}}</md-option>
