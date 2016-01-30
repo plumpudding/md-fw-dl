@@ -1,19 +1,93 @@
+﻿(function(){
+    var s = window.location.search.substring(1).split('&');
+    if(!s.length) return;
+    window.$_GET = {};
+    for(var i  = 0; i < s.length; i++){
+      var parts = s[i].split('=');
+      window.$_GET[unescape(parts[0])] = unescape(parts[1]);
+    }
+  }())
+
+{
+var SiteID;
+var SiteShort;
+var SiteName;
+var SiteVersion;
+switch ($_GET["site"]){
+               case 'd01':{
+			SiteID = "domaene01";
+			SiteShort = "d01";
+			SiteName ="Münster Stadt";
+			SiteVersion ="0.1.2";
+			           		break;                             
+			}
+               case 'd02':{
+			SiteID = "domaene02";
+			SiteShort = "d02";
+			SiteName ="Kreis Coesfeld";
+			SiteVersion ="0.0.3";
+               		break;                             
+			}
+               case 'd03':{
+			SiteID = "domaene03";
+			SiteShort = "d03";
+			SiteName ="Kreis Steinfurt West";
+			SiteVersion ="0.0.1";
+               		break;                             
+			}
+               case 'd04':{
+			SiteID = "domaene04";
+			SiteShort = "d04";
+			SiteName ="Kreis Steinfurt Ost";
+			SiteVersion ="0.0.2";
+               		break;                             
+			}
+               case 'd05':{
+			SiteID = "domaene05";
+			SiteShort = "d05";
+			SiteName ="Münster Süd";
+			SiteVersion ="0.0.2";
+               		break;                             
+			}
+               case 'd06':{
+			SiteID = "domaene06";
+			SiteShort = "d06";
+			SiteName ="Westmünsterland";
+			SiteVersion ="0.0.2";
+			break;                             
+			};
+
+	       case 'd14':{
+			SiteID = "domaene14";
+			SiteShort = "d14";
+			SiteName ="Warendorf";
+			SiteVersion ="0.0.2";
+			break;                             
+			};
+
+	       default:  {
+			var SiteError = "True";
+			alert("Leider konnten keine Angaben zur Domäne gefunden werden");
+			window.location = "http://www.freifunk-wml.de/";
+			};
+            };
+
+}
+
+function LoadLogo(){
+{
+    	var image = document.getElementById('myImage');
+        image.src = "img/" + SiteShort +".png";
+    }
+}
 var config = {
 
-version: "2015.1.2",
+globalversion: "2015.1.2",
+version: SiteVersion,
 
 modes: {
   "factory": "Erstinstallation (Neu gekaufter Router)",
   "sysupgrade": "Manuelles Update eines bestehenden Freifunk-Routers"
-},
-
-sites:{
-"domaene01" : {id: "domaene01",short:"d01",name:"Münster Stadt", version:"0.1.2"},
-"domaene02" : {id: "domaene02",short:"d02",name:"Kreis Coesfeld", version:"0.0.3"},
-"domaene03" : {id: "domaene03",short:"d03",name:"Kreis Steinfurt West", version:"0.0.1"},
-"domaene04" : {id: "domaene04",short:"d04",name:"Kreis Steinfurt Ost", version:"0.0.2"},
-"domaene05" : {id: "domaene05",short:"d05",name:"Münster Süd", version:"0.0.2"},
-"domaene06" : {id: "domaene06",short:"d06",name:"Westmünsterland", version:"0.0.2"},
 },
 
 //router list for gluon v2015.1
@@ -102,9 +176,9 @@ routers: {
  "x86-generic":{id:"x86-generic.img.gz",name:"generic",manufacturer:"x86"},
 },
 
-name: "Münsterland",
+name: SiteName,
+error: SiteError,
+url: "http://firmware.freifunk-muensterland.org/" + SiteID + "/stable/{{selectedMode}}/gluon-ffms" + SiteShort + "-v{{config.globalversion}}+" + SiteVersion + "-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade':''}}.bin"
 
-
-url: "http://firmware.freifunk-muensterland.org/{{parse(selectedSite).id}}/stable/{{selectedMode}}/gluon-ffms{{parse(selectedSite).short}}-v" +
-"{{config.version}}+{{parse(selectedSite).version}}-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade':''}}"
 }
+

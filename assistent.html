@@ -1,0 +1,105 @@
+﻿
+<!--Copyright 2015 PetaByteBoy
+
+    This file is part of the Material Design Firmware Downloader.
+
+    The Material Design Firmware Downloader is free software: you can redistribute it and/or modify
+    
+it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    
+The Material Design Firmware Downloader is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with the Material Design Firmware Downloader.  
+If not, see <http://www.gnu.org/licenses/>. -->
+
+
+
+<html ng-app="firmwareDownload" ng-controller="DownloadCtrl">
+<head>
+
+<title>Freifunk Firmware Download</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="style.css"/>
+<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+<link rel="stylesheet" href="lib/angular-material.min.css"/>
+    
+<script src="lib/angular.min.js"></script>
+    
+<script src="lib/angular-animate.min.js"></script>
+
+<script src="lib/angular-aria.min.js"></script>
+
+<script src="lib/angular-material.min.js"></script>
+
+<script src="config.js"></script>
+
+<script src="app.js"></script>
+</head>
+
+  
+<body class="main" layout-align="center center" layout="column" onLoad="LoadLogo()">
+
+    
+<md-whiteframe class="md-whiteframe-z2" layout layout-align="center center">
+
+<div class="whiteframe-content">
+
+ 
+      
+
+<img  id="myImage" class="md-card-image" alt="Logo Freifunk Münsterland">
+       
+<h1 class="headline">Freifunk<a ng-show="config.name"> {{config.name}}</a> Firmware</h1>
+       
+<h2 class="headline" ng-show="config.version">Version {{config.version}} herunterladen</h2>
+
+   
+<p class="headline">Schritt 2 mach Angaben zu deinem Router:</p> 
+
+    
+<md-select ng-model="selectedMode" ng-show="config.modes" ng-disabled="config.error">
+
+<md-option ng-repeat="(key, value) in config.modes" value="{{key}}">{{value}}</md-option>
+</md-select>
+
+        
+
+<md-select placeholder="Hersteller" ng-model="selectedManufacturer" ng-change="selectedRouter = null;" ng-show="config.manufacturers" ng-disabled="config.error">
+<md-option ng-repeat="(key, value) in config.manufacturers" value="{{value | json}}">{{value.name}}</md-option>
+        </md-select>
+
+ 
+
+<md-select placeholder="Bitte wähle einen Router" ng-model="selectedRouter" ng-show="config.routers" ng-disabled="config.error">
+<md-option ng-repeat="(key, value) in config.routers" ng-if="selectedManufacturer == null || value.manufacturer == parse(selectedManufacturer).name" value="{{value | json}}">{{selectedManufacturer == null ? value.manufacturer+' '+value.name : value.name}}</md-option></md-select>
+
+        
+
+
+<md-button class="md-raised md-primary" ng-href="{{ interpolate(config.url) }}" ng-disabled="!(selectedRouter)" target="_self">Download Firmware</md-button>
+
+  
+
+      
+<p class=license>Copyright 2015 PetaByteBoy | <a href="copying.html" target="_self">License</a></p>
+
+      
+<p><a href="index.html" target="_self">Zurück zur Karte</a></p>
+
+    
+
+</div>
+    </md-whiteframe>
+     
+  </body>
+
+</html>
