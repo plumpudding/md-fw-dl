@@ -110,11 +110,7 @@ angular.module('firmwareDownload', ['ngMaterial', 'leaflet-directive'])
         geojson : {}
     });
     var settings = {};
-    var latestID = '';
-    //dirty hack, cause $q..then() won't play with me
-    for (id in mapTools.settings){
-        latestID = id;
-    }
+    
     angular.forEach(mapTools.settings, function(dom){
         $http.get(dom.geojson).success(function(data, status) {
             settings[dom.id] = {
@@ -122,7 +118,8 @@ angular.module('firmwareDownload', ['ngMaterial', 'leaflet-directive'])
                 resetStyleOnMouseout: false,
                 style: mapTools.getStyle(dom)
             };
-            if (dom.id == latestID){
+            //dirty hack, cause $q..then() won't play with me
+            if (Object.keys(mapTools.settings).length == Object.keys(settings).length){
                 angular.extend($scope.geojson, settings);
             }
         });
