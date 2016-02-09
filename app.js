@@ -99,9 +99,9 @@ angular.module('firmwareDownload', ['ngMaterial', 'leaflet-directive'])
     angular.extend($scope, {
         muenster: {
             lat: 52.05,
-            lng: 7.6,
+            lng: 7.2,
             zoom: 9,
-            autoDiscover: true
+            //autoDiscover: true
         },
         defaults: {
             scrollWheelZoom: false
@@ -109,25 +109,31 @@ angular.module('firmwareDownload', ['ngMaterial', 'leaflet-directive'])
         legend : mapTools.buildLegend(),
         geojson : {}
     });
-
+    var settings = {};
+    var latestID = '';
+    //dirty hack, cause $q..then() won't play with me
+    for (id in mapTools.settings){
+        latestID = id;
+    }
     angular.forEach(mapTools.settings, function(dom){
         $http.get(dom.geojson).success(function(data, status) {
-            var settings = {};
             settings[dom.id] = {
                 data: data,
                 resetStyleOnMouseout: false,
                 style: mapTools.getStyle(dom)
             };
-            angular.extend($scope.geojson, settings);
+            if (dom.id == latestID){
+                angular.extend($scope.geojson, settings);
+            }
         });
     });
-
     $scope.$on("leafletDirectiveGeoJson.dommap.mouseover", function(ev, leafletPayload) {
         var target = leafletPayload.leafletEvent.target;
         var layer = leafletPayload.leafletEvent.target;
         layer.setStyle({
             weight: 2,
             color: '#777',
+            dashArray: '0',
             fillColor: mapTools.shadeColor(target.options.style.fillColor, 0.25)
         });
         layer.bringToFront();
@@ -218,6 +224,8 @@ angular.module('firmwareDownload', ['ngMaterial', 'leaflet-directive'])
     if($location.search().region != null) { $scope.selectedSite = $filter('json')(config.sites[$location.search().region]); }
     if($location.search().manufacturer != null) { $scope.selectedManufacturer = $filter('json')(config.manufacturers[$location.search().manufacturer]); }
     if($location.search().router != null) { $scope.selectedRouter = $filter('json')(config.routers[$location.search().router]); }
+
+
   })
   //make parameters work without #! in the url
   .config(function($locationProvider) {
