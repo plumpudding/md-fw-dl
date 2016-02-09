@@ -85,7 +85,8 @@ var mapTools = {
         return legend;
     },
     settings : {},
-    bcolors : ['#2980B9', '#8E44AD', '#C83D2F', '#EC5E00', '#F1C40F', '#27AE60', '#34495E']
+    bcolors : ['#2980B9', '#8E44AD', '#C83D2F', '#EC5E00', '#F1C40F', '#27AE60', '#34495E'],
+    activeLayer : false
 }
 
 angular.module('firmwareDownload', ['ngMaterial', 'leaflet-directive'])
@@ -145,6 +146,9 @@ angular.module('firmwareDownload', ['ngMaterial', 'leaflet-directive'])
         }else{
             layer.setStyle(mapTools.getStyle(mapTools.settings[leafletPayload.layerName]));
         }
+        if (mapTools.activeLayer){
+            mapTools.activeLayer.bringToFront();
+        }
     });
 
     //TODO: better way for "external" updating layer style
@@ -168,6 +172,7 @@ angular.module('firmwareDownload', ['ngMaterial', 'leaflet-directive'])
                     }
                     obj.setStyle(mapTools.getStyleClicked(mapTools.settings[newID.id]));
                     obj.bringToFront();
+                    mapTools.activeLayer = obj;
                     
                 }
             });
