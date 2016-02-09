@@ -101,7 +101,7 @@ angular.module('firmwareDownload', ['ngMaterial', 'leaflet-directive'])
         muenster: {
             lat: 52.05,
             lng: 7.2,
-            zoom: 9,
+            zoom: 8,
             //autoDiscover: true
         },
         defaults: {
