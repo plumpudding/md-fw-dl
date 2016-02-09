@@ -14,6 +14,7 @@ sites:{
 "domaene04" : {id: "domaene04",short:"d04",name:"Kreis Steinfurt Ost", version:"0.0.2"},
 "domaene05" : {id: "domaene05",short:"d05",name:"Münster Süd", version:"0.0.2"},
 "domaene06" : {id: "domaene06",short:"d06",name:"Westmünsterland", version:"0.0.2"},
+"domaene14" : {id: "domaene14",short:"d14",name:"Kreis Warendorf", version:"0.0.2"},
 },
 
 //router list for gluon v2015.1

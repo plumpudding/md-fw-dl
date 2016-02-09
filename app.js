@@ -16,12 +16,165 @@
     You should have received a copy of the GNU General Public License
     along with the Material Design Firmware Downloader.  If not, see <http://www.gnu.org/licenses/>. */
 
-angular.module('firmwareDownload', ['ngMaterial'])
-  .controller('DownloadCtrl', function($scope, $location, $interpolate, $filter){
+var mapTools = {
+    getColor : function(){
+        var color = this.bcolors.shift();
+        this.bcolors.push(color);
+        return color;
+    },
+    getStyle : function(dom){
+        return {
+            fillColor: dom.color,
+            weight: 2,
+            opacity: 1,
+            color: 'white',
+            dashArray: '3',
+            fillOpacity: 0.7
+        };
+    },
+    getStyleClicked : function(dom){
+        return {
+            fillColor: this.shadeColor(dom.color,-0.25),
+            weight: 2,
+            opacity: 1,
+            color: '#333',
+            dashArray: '0',
+            fillOpacity: 0.7
+        };
+    },
+    shadeColor : function(hex, lum) {
 
+        // validate hex string
+        hex = String(hex).replace(/[^0-9a-f]/gi, '');
+        if (hex.length < 6) {
+            hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+        }
+        lum = lum || 0;
+
+        // convert to decimal and change luminosity
+        var rgb = "#", c, i;
+        for (i = 0; i < 3; i++) {
+            c = parseInt(hex.substr(i*2,2), 16);
+            c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+            rgb += ("00"+c).substr(c.length);
+        }
+
+        return rgb;
+    },
+    prepare : function(sites){
+        for (var dom in sites){
+            this.settings[dom] = {
+                'id' : sites[dom].id,
+                'name' : sites[dom].name,
+                'color' : this.getColor(),
+                'geojson' : 'shapes/'+sites[dom].id+'.geojson',
+                'active' : false
+            };
+        }
+    },
+    buildLegend : function(){
+        var legend = {
+            position : 'bottomleft',
+            colors : [],
+            labels : []
+        };
+        for (dom in this.settings){
+            legend.colors.push(this.settings[dom].color);
+            legend.labels.push(this.settings[dom].name);
+        }
+        return legend;
+    },
+    settings : {},
+    bcolors : ['#2980B9', '#8E44AD', '#C83D2F', '#EC5E00', '#F1C40F', '#27AE60', '#34495E']
+}
+
+angular.module('firmwareDownload', ['ngMaterial', 'leaflet-directive'])
+  .controller('DownloadCtrl', function($scope, $location, $interpolate, $filter, $http, leafletData){
+    mapTools.prepare(config.sites);
     $scope.config = config;
+    leafletData.getGeoJSON().then(function(lObjs){
+        window.leafletDataGeoJSON = lObjs;
+    });
 
+    angular.extend($scope, {
+        muenster: {
+            lat: 52.05,
+            lng: 7.6,
+            zoom: 9,
+            autoDiscover: true
+        },
+        defaults: {
+            scrollWheelZoom: false
+        },
+        legend : mapTools.buildLegend(),
+        geojson : {}
+    });
 
+    angular.forEach(mapTools.settings, function(dom){
+        $http.get(dom.geojson).success(function(data, status) {
+            var settings = {};
+            settings[dom.id] = {
+                data: data,
+                resetStyleOnMouseout: false,
+                style: mapTools.getStyle(dom)
+            };
+            angular.extend($scope.geojson, settings);
+        });
+    });
+
+    $scope.$on("leafletDirectiveGeoJson.dommap.mouseover", function(ev, leafletPayload) {
+        var target = leafletPayload.leafletEvent.target;
+        var layer = leafletPayload.leafletEvent.target;
+        layer.setStyle({
+            weight: 2,
+            color: '#777',
+            fillColor: mapTools.shadeColor(target.options.style.fillColor, 0.25)
+        });
+        layer.bringToFront();
+    });
+
+    $scope.$on("leafletDirectiveGeoJson.dommap.mouseout", function(ev, leafletPayload) {
+        var target = leafletPayload.leafletEvent.target;
+        var layer = leafletPayload.leafletEvent.target;
+        var activeLayer = angular.fromJson($scope.selectedSite);
+        if (activeLayer && leafletPayload.layerName == activeLayer.id){
+            layer.setStyle(mapTools.getStyleClicked(mapTools.settings[leafletPayload.layerName]));
+        }else{
+            layer.setStyle(mapTools.getStyle(mapTools.settings[leafletPayload.layerName]));
+        }
+    });
+
+    //TODO: better way for "external" updating layer style
+    $scope.$watch("selectedSite", function(newValue, oldValue) {
+            var oldID = angular.fromJson(oldValue);
+            var newID = angular.fromJson(newValue);
+            leafletData.getGeoJSON().then(function(lObjs){
+                if (oldID){
+                    var obj = {};
+                    for (layer in lObjs[oldID.id]._layers){
+                        obj = lObjs[oldID.id]._layers[layer];
+                        break;
+                    }
+                    obj.setStyle(mapTools.getStyle(mapTools.settings[oldID.id]));
+                }
+                if (newID){
+                    var obj = {};
+                    for (layer in lObjs[newID.id]._layers){
+                        obj = lObjs[newID.id]._layers[layer];
+                        break;
+                    }
+                    obj.setStyle(mapTools.getStyleClicked(mapTools.settings[newID.id]));
+                    obj.bringToFront();
+                    
+                }
+            });
+    });
+
+    $scope.$on("leafletDirectiveGeoJson.dommap.click", function(ev, leafletPayload) {
+        $scope.selectedSite = $filter('json')(config.sites[leafletPayload.layerName]);
+    });
+
+    
     $scope.parse = function (string) {
         try {
             return JSON.parse(string);
@@ -57,8 +210,6 @@ angular.module('firmwareDownload', ['ngMaterial'])
 
       return url;
     };
-
-
     //select factory by default
     $scope.selectedMode = "factory";
 
@@ -72,3 +223,4 @@ angular.module('firmwareDownload', ['ngMaterial'])
   .config(function($locationProvider) {
     $locationProvider.html5Mode({ enabled: true, requireBase: false });
   });
+
