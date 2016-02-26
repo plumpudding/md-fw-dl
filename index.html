@@ -46,7 +46,7 @@
 
         <h2 class="headline" ng-show="config.version">Version {{config.version}} herunterladen</h2>
         
-        <leaflet legend="legend" id="dommap" lf-center="muenster" geojson="geojson" geojson-nested="true" height="280px" width="100%"></leaflet>
+        <leaflet legend="legend" id="dommap" lf-center="muenster" geojson="geojson" geojson-nested="true" height="420px" width="100%"></leaflet>
 
         <md-select ng-model="selectedMode" ng-show="config.modes">
             <md-option ng-repeat="(key, value) in config.modes" value="{{key}}">{{value}}</md-option>

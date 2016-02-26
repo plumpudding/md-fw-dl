@@ -34,32 +34,13 @@ var mapTools = {
     },
     getStyleClicked : function(dom){
         return {
-            fillColor: this.shadeColor(dom.color,-0.25),
+            fillColor: dom.color,
             weight: 2,
             opacity: 1,
             color: '#333',
             dashArray: '0',
-            fillOpacity: 0.7
+            fillOpacity: 0.85
         };
-    },
-    shadeColor : function(hex, lum) {
-
-        // validate hex string
-        hex = String(hex).replace(/[^0-9a-f]/gi, '');
-        if (hex.length < 6) {
-            hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
-        }
-        lum = lum || 0;
-
-        // convert to decimal and change luminosity
-        var rgb = "#", c, i;
-        for (i = 0; i < 3; i++) {
-            c = parseInt(hex.substr(i*2,2), 16);
-            c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
-            rgb += ("00"+c).substr(c.length);
-        }
-
-        return rgb;
     },
     prepare : function(sites){
         for (var dom in sites){
@@ -99,9 +80,9 @@ angular.module('firmwareDownload', ['ngMaterial', 'leaflet-directive'])
 
     angular.extend($scope, {
         muenster: {
-            lat: 52.05,
-            lng: 7.2,
-            zoom: 8,
+            lat: 52.01,
+            lng: 7.27,
+            zoom: 9,
             //autoDiscover: true
         },
         defaults: {
@@ -132,7 +113,7 @@ angular.module('firmwareDownload', ['ngMaterial', 'leaflet-directive'])
             weight: 2,
             color: '#777',
             dashArray: '0',
-            fillColor: mapTools.shadeColor(target.options.style.fillColor, 0.25)
+            fillOpacity: 0.4
         });
         layer.bringToFront();
     });

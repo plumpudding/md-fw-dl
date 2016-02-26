@@ -26,16 +26,30 @@
 
 .headline {
   text-transform: uppercase;
+  margin: 0;
   padding: 0 15px;
+  
+  width: 100%;
+  margin-left: -115px;
+}
+h1.headline {
+  margin-top: 10px;
+  font-size: 1.8em;
+}
+h2.headline {
+  font-size: 1.2em;
 }
 
 .md-card-image {
   -webkit-filter: drop-shadow(0px 5px 8px #222);
   filter: drop-shadow(0px 5px 8px #222);
-  margin: 30px;
+  margin: 15px 0 15px 15px;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 35px;
+  width: 80px;
+  float: left;
 }
 
 md-whiteframe {
