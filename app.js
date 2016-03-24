@@ -1,5 +1,5 @@
 
-/*  Copyright 2015 PetaByteBoy
+/*  Copyright 2016 PetaByteBoy
 
     This file is part of the Material Design Firmware Downloader.
 
@@ -17,38 +17,57 @@
     along with the Material Design Firmware Downloader.  If not, see <http://www.gnu.org/licenses/>. */
 
 angular.module('firmwareDownload', ['ngMaterial'])
-  .controller('DownloadCtrl', function($scope, $location, $interpolate, $filter){
+  .controller('DownloadCtrl', function($scope, $location, $interpolate, $filter, $http) {
 
-    $scope.config = config;
+    $http.get('config.json').then(function(res) {
+      $scope.config = res.data;
+      var config = res.data;
+      document.title = config.name + ' Firmware'
 
-    $scope.parse = function (string) {
+      $scope.parse = function (string) {
         try {
-            return JSON.parse(string);
+          return JSON.parse(string);
         } catch (error) {}
-    };
-    
-    $scope.splitString = function (string, nb) {
-        return string.substring(0,nb);
-    };
+      };
 
-    $scope.interpolate = function (value) {
+      $scope.splitString = function (string, nb) {
+         return string.substring(0,nb);
+      };
+
+      $scope.interpolate = function (value) {
         try {
-            if (typeof(value) != undefined) {
-                return $interpolate(value)($scope);
-            }
+          if (typeof(value) != undefined) {
+            return $interpolate(value)($scope);
+          }
         } catch (error) {}
-    };
+      };
 
+      $scope.selectionChanged = function () {
+        var newURL = window.location.protocol + '//' + window.location.host + '/' + window.location.pathname;
 
-    //select factory by default
-    $scope.selectedMode = "factory";
+        var args = []
+        if($scope.selectedRouter)
+          args.push('router=' + $scope.parse($scope.selectedRouter).id)
+        if($scope.selectedManufacturer)
+          args.push('manufacturer=' + $scope.parse($scope.selectedManufacturer).id)
+        if($scope.selectedSite)
+          args.push('region=' + $scope.selectedSite)
+        if($scope.selectedMode != 'factory')
+          args.push('mode=' + $scope.selectedMode)
+        newURL += '?' + args.join('&')
 
-    //read selection from url parameters
-    if($location.search().mode != null) { $scope.selectedMode = $location.search().mode; }
-    if($location.search().region != null) { $scope.selectedSite = $filter('json')(config.sites[$location.search().region]); }
-    if($location.search().manufacturer != null) { $scope.selectedManufacturer = $filter('json')(config.manufacturers[$location.search().manufacturer]); }
-    if($location.search().router != null) { $scope.selectedRouter = $filter('json')(config.routers[$location.search().router]); }
-    console.log($scope.selectedRouter);
+        history.pushState({}, null, newURL);
+      }
+
+      //select factory by default
+      $scope.selectedMode = 'factory';
+
+      //read selection from url parameters
+      if($location.search().mode != null) { $scope.selectedMode = $location.search().mode; }
+      if($location.search().region != null) { $scope.selectedSite = $location.search().region; }
+      if($location.search().manufacturer != null) { $scope.selectedManufacturer = $filter('json')(config.manufacturers[$location.search().manufacturer]); }
+      if($location.search().router != null) { $scope.selectedRouter = $filter('json')(config.routers[$location.search().router]); }
+    }, function(err) {console.log(err)});
   })
   //make parameters work without #! in the url
   .config(function($locationProvider) {

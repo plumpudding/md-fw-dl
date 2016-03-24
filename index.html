@@ -1,5 +1,5 @@
 
-<!--Copyright 2015 PetaByteBoy
+<!--Copyright 2016 PetaByteBoy
 
     This file is part of the Material Design Firmware Downloader.
 
@@ -18,7 +18,7 @@
 
 <html ng-app="firmwareDownload" ng-controller="DownloadCtrl">
   <head>
-    <title>Freifunk Firmware Download</title>
+    <title>Firmware Download</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="style.css"/>
@@ -28,7 +28,6 @@
     <script src="lib/angular-animate.min.js"></script>
     <script src="lib/angular-aria.min.js"></script>
     <script src="lib/angular-material.min.js"></script>
-    <script src="config.js"></script>
     <script src="app.js"></script>
   </head>
 
@@ -37,29 +36,29 @@
     <md-whiteframe class="md-whiteframe-z2" layout layout-align="center center">
       <div class="whiteframe-content">
 
-        <img src="img/logo.png" class="md-card-image" alt="Freifunk gl.wupper">
-        <h1 class="headline">Freifunk<a ng-show="config.name"> {{config.name}}</a> Firmware</h1>
-        <h2 class="headline" ng-show="config.version">Version {{config.version}} herunterladen</h2>
+        <img src="img/logo.png" class="md-card-image">
+        <h1 class="headline">{{config.name}}</a> Firmware</h1>
+        <h2 class="headline">Version {{config.version.id}} herunterladen</h2>
 
-        <md-select ng-model="selectedMode" ng-show="config.modes">
+        <md-select ng-model="selectedMode" ng-show="config.modes" ng-change="selectionChanged()">
           <md-option ng-repeat="(key, value) in config.modes" value="{{key}}">{{value}}</md-option>
         </md-select>
 
-        <md-select placeholder="Bitte wähle einen Ort" ng-model="selectedSite" ng-show="config.sites">
-          <md-option ng-repeat="(key, value) in config.sites" value="{{value | json}}">{{value.name}}</md-option>
+        <md-select placeholder="Bitte wähle einen Ort" ng-model="selectedSite" ng-show="config.sites" ng-change="selectionChanged()">
+          <md-option ng-repeat="(key, value) in config.sites" value="{{key}}">{{value.name}}</md-option>
         </md-select>
 
-        <md-select placeholder="Nach Hersteller sortieren" ng-model="selectedManufacturer" ng-change="selectedRouter = null;" ng-show="config.manufacturers">
+        <md-select placeholder="Nach Hersteller sortieren" ng-model="selectedManufacturer" ng-change="selectedRouter = null; selectionChanged();" ng-show="config.manufacturers">
           <md-option ng-repeat="(key, value) in config.manufacturers" value="{{value | json}}">{{value.name}}</md-option>
         </md-select>
 
-        <md-select placeholder="Bitte wähle einen Router" ng-model="selectedRouter" ng-show="config.routers">
-          <md-option ng-repeat="(key, value) in config.routers" ng-if="selectedManufacturer == null || value.manufacturer == parse(selectedManufacturer).name" value="{{value | json}}">{{selectedManufacturer == null ? value.manufacturer+' '+value.name : value.name}}</md-option>
+        <md-select placeholder="Bitte wähle einen Router" ng-model="selectedRouter" ng-show="config.routers" ng-change="selectionChanged()">
+          <md-option ng-repeat="(key, value) in config.routers" ng-if="(selectedManufacturer == null || value.manufacturer == parse(selectedManufacturer).name) && !(selectedMode == 'factory' && value.hideFactory) && !(selectedMode == 'sysupgrade' && value.hideSysupgrade)" value="{{value | json}}">{{selectedManufacturer == null ? value.manufacturer+' '+value.name : value.name}}</md-option>
         </md-select>
 
-        <md-button class="md-raised md-primary" ng-href="{{ interpolate(config.url) }}" ng-disabled="!(selectedSite && selectedRouter)" target="_self">Download Firmware</md-button>
+        <md-button class="md-raised md-primary" ng-href="{{ interpolate(config.version.url) }}" ng-disabled="!(selectedSite && selectedRouter)" target="_self">Download Firmware</md-button>
 
-        <p class=license>Copyright 2015 PetaByteBoy | <a href="copying.html" target="_self">License</a></p>
+        <p class=license>Copyright 2016 PetaByteBoy | <a href="copying.html" target="_self">License</a></p>
 
       </div>
     </md-whiteframe>
