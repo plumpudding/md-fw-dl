@@ -56,7 +56,7 @@ angular.module('firmwareDownload', ['ngMaterial'])
           args.push('mode=' + $scope.selectedMode)
         newURL += '?' + args.join('&')
 
-        history.pushState({}, null, newURL);
+        History.pushState(null, null, newURL);
       }
 
       //select factory by default
