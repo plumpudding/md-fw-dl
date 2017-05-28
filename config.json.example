@@ -4,35 +4,55 @@
     "sysupgrade": "Update"
   },
 
-  "sites": {
-    "bcd": {"id": "bcd", "name": "Burscheid"},
-    "bgl": {"id": "bgl", "name": "Bergisch Gladbach"},
-    "lln": {"id": "lln", "name": "Leichlingen"},
-    "ode": {"id": "ode", "name": "Odenthal"},
-    "ovr": {"id": "ovr", "name": "Overath"},
-    "rrh": {"id": "rrh", "name": "Rösrath"}
+   "sites": {
+    "stablel2tp": {"id": "stablel2tp", "name": "l2tp stable release"},
+    "stable": {"id": "stable", "name": "fastd stable release"}
   },
 
   "manufacturers": {
+    "alfa-network": {"id": "alfa-network", "name": "Alfa Networks"},
     "buffalo": {"id": "buffalo", "name": "Buffalo"},
     "d-link": {"id": "d-link", "name": "D-Link"},
     "gl-inet": {"id": "gl-inet", "name": "GL-Inet"},
     "linksys": {"id": "linksys", "name": "Linksys"},
+    "openmesh": {"id": "openmesh", "name": "OpenMesh"},
+    "Raspberry": {"id": "raspberry", "name": "Raspberry"},
     "tp-link": {"id": "tp-link", "name": "TP-Link"},
     "ubiquiti": {"id": "ubiquiti", "name": "Ubiquiti"},
     "netgear": {"id": "netgear", "name": "Netgear"},
     "wd": {"id": "wd", "name": "WD"},
-    "none": {"id": "none", "name": "(none)"}
+    "none": {"id": "none", "name": "(PCs)"}
   },
 
   "routers": {
+    "alfa-network-ap121": { "id": "alfa-network-ap121", "name": "AP121", "manufacturer": "Alfa Networks" },
+    "alfa-network-ap121u": { "id": "alfa-network-ap121u", "name": "AP121u", "manufacturer": "Alfa Networks" },
+    "alfa-network-hornet-ub": { "id": "alfa-network-hornet-ub", "name": "Hornet UB", "manufacturer": "Alfa Networks" },
+    "alfa-network-n2-n5": { "id": "alfa-network-n2-n5", "name": "N2/N5", "manufacturer": "Alfa Networks" },
+    "alfa-network-tube2h": { "id": "alfa-network-tube2h", "name": "Tube 2H", "manufacturer": "Alfa Networks" },
+    "openmesh-mr600": { "id": "openmesh-mr600", "name": "MR600 v1", "manufacturer": "OpenMesh" },
+    "openmesh-mr600v2": { "id": "openmesh-mr600v2", "name": "MR600 v2", "manufacturer": "OpenMesh" },
+    "openmesh-mr900": { "id": "openmesh-mr900", "name": "MR900 v1", "manufacturer": "OpenMesh" },
+    "openmesh-mr900v2": { "id": "openmesh-mr900v2", "name": "MR900 v2", "manufacturer": "OpenMesh" },
+    "openmesh-mr1750": { "id": "openmesh-mr1750", "name": "MR1750 v1", "manufacturer": "OpenMesh" },
+    "openmesh-mr1750v2": { "id": "openmesh-mr1750v2", "name": "MR1750 v2", "manufacturer": "OpenMesh" },
+    "openmesh-om2p-hs": { "id": "openmesh-om2p-hs", "name": "2P-HS v1", "manufacturer": "OpenMesh" },
+    "openmesh-om2p-hsv2": { "id": "openmesh-om2p-hsv2", "name": "2P-HS v2", "manufacturer": "OpenMesh" },
+    "openmesh-om2p-hsv3": { "id": "openmesh-om2p-hsv3", "name": "2P-HS v3", "manufacturer": "OpenMesh" },
+    "openmesh-om2p-lc": { "id": "openmesh-om2p-lc", "name": "2P-LC", "manufacturer": "OpenMesh" },
+    "openmesh-om2p": { "id": "openmesh-om2p", "name": "2P", "manufacturer": "OpenMesh" },
+    "openmesh-om5p-ac": { "id": "openmesh-om5p-ac", "name": "5P-ac v1", "manufacturer": "OpenMesh" },
+    "openmesh-om5p-acv2": { "id": "openmesh-om5p-acv2", "name": "5P-ac v2", "manufacturer": "OpenMesh" },
+    "openmesh-om5p-an": { "id": "openmesh-om5p-an", "name": "5P-an", "manufacturer": "OpenMesh" },
+    "openmesh-om5p": { "id": "openmesh-om5p", "name": "5P", "manufacturer": "OpenMesh" },
     "buffalo-wzr-hp-ag300h-factory": { "id": "buffalo-wzr-hp-ag300h", "name": "WZR-HP-AG300H", "manufacturer": "Buffalo", "hideSysupgrade": true },
     "buffalo-wzr-600dhp-factory": { "id": "buffalo-wzr-600dhp", "name": "WZR-600DHP", "manufacturer": "Buffalo", "hideSysupgrade": true },
     "buffalo-wzr-hp-ag300h-sysupgrade": { "id": "buffalo-wzr-hp-ag300h-wzr-600dhp", "name": "WZR-HP-AG300H", "manufacturer": "Buffalo", "hideFactory": true },
     "buffalo-wzr-600dhp-sysupgrade": { "id": "buffalo-wzr-hp-ag300h-wzr-600dhp", "name": "WZR-600DHP", "manufacturer": "Buffalo", "hideFactory": true },
     "buffalo-wzr-hp-g300nh": { "id": "buffalo-wzr-hp-g300nh", "name": "WZR-HP-G300NH", "manufacturer": "Buffalo" },
     "buffalo-wzr-hp-g450h": { "id": "buffalo-wzr-hp-g450h", "name": "WZR-HP-G450H", "manufacturer": "Buffalo" },
-    "d-link-dir-505-rev-a1": { "id": "d-link-dir-505-rev-a1", "name": "505", "manufacturer": "D-Link" },
+    "d-link-dir-505-rev-a1": { "id": "d-link-dir-505-rev-a1", "name": "505-a1", "manufacturer": "D-Link" },
+    "d-link-dir-505-rev-a2": { "id": "d-link-dir-505-rev-a2", "name": "505-a2", "manufacturer": "D-Link" },
     "d-link-dir-615-rev-c1": { "id": "d-link-dir-615-rev-c1", "name": "615", "manufacturer": "D-Link" },
     "d-link-dir-825-rev-b1": { "id": "d-link-dir-825-rev-b1", "name": "825", "manufacturer": "D-Link" },
     "gl-inet-6408a-v1": { "id": "gl-inet-6408a-v1", "name": "6408A", "manufacturer": "GL-Inet" },
@@ -52,6 +72,8 @@
     "tp-link-cpe510-v1.1": { "id": "tp-link-cpe510-v1.1", "name": "CPE510 v1.1", "manufacturer": "TP-Link" },
     "tp-link-cpe520-v1.0": { "id": "tp-link-cpe520-v1.0", "name": "CPE520 v1.0", "manufacturer": "TP-Link" },
     "tp-link-cpe520-v1.1": { "id": "tp-link-cpe520-v1.1", "name": "CPE520 v1.1", "manufacturer": "TP-Link" },
+    "tp-link-wbs210-v1.20": { "id": "tp-link-wbs210-v1.20", "name": "WBS210 v1.20", "manufacturer": "TP-Link" },
+    "tp-link-wbs510-v1.20": { "id": "tp-link-wbs510-v1.20", "name": "WBS510 v1.20", "manufacturer": "TP-Link" },
     "tp-link-tl-mr3020-v1": { "id": "tp-link-tl-mr3020-v1", "name": "TL-MR3020 v1", "manufacturer": "TP-Link" },
     "tp-link-tl-mr3040-v1": { "id": "tp-link-tl-mr3040-v1", "name": "TL-MR3040 v1", "manufacturer": "TP-Link" },
     "tp-link-tl-mr3040-v2": { "id": "tp-link-tl-mr3040-v2", "name": "TL-MR3040 v2", "manufacturer": "TP-Link" },
@@ -78,10 +100,12 @@
     "tp-link-tl-wr1043n-nd-v1": { "id": "tp-link-tl-wr1043n-nd-v1", "name": "TL-WR1043N/ND v1", "manufacturer": "TP-Link" },
     "tp-link-tl-wr1043n-nd-v2": { "id": "tp-link-tl-wr1043n-nd-v2", "name": "TL-WR1043N/ND v2", "manufacturer": "TP-Link" },
     "tp-link-tl-wr1043n-nd-v3": { "id": "tp-link-tl-wr1043n-nd-v3", "name": "TL-WR1043N/ND v3", "manufacturer": "TP-Link" },
+    "tp-link-tl-wr1043n-nd-v4": { "id": "tp-link-tl-wr1043n-nd-v4", "name": "TL-WR1043N/ND v4", "manufacturer": "TP-Link" },
     "tp-link-tl-wr2543n-nd-v1": { "id": "tp-link-tl-wr2543n-nd-v1", "name": "TL-WR2543N/ND v1", "manufacturer": "TP-Link" },
     "tp-link-tl-wr703n-v1": { "id": "tp-link-tl-wr703n-v1", "name": "TL-WR703N v1", "manufacturer": "TP-Link" },
     "tp-link-tl-wr710n-v1": { "id": "tp-link-tl-wr710n-v1", "name": "TL-WR710N v1", "manufacturer": "TP-Link" },
     "tp-link-tl-wr710n-v2": { "id": "tp-link-tl-wr710n-v2", "name": "TL-WR710N v2", "manufacturer": "TP-Link" },
+    "tp-link-tl-wr710n-v2.1": { "id": "tp-link-tl-wr710n-v2.1", "name": "TL-WR710N v2.1", "manufacturer": "TP-Link" },
     "tp-link-tl-wr740n-nd-v1": { "id": "tp-link-tl-wr740n-nd-v1", "name": "TL-WR740N/ND v1", "manufacturer": "TP-Link" },
     "tp-link-tl-wr740n-nd-v3": { "id": "tp-link-tl-wr740n-nd-v3", "name": "TL-WR740N/ND v3", "manufacturer": "TP-Link" },
     "tp-link-tl-wr740n-nd-v4": { "id": "tp-link-tl-wr740n-nd-v4", "name": "TL-WR740N/ND v4", "manufacturer": "TP-Link" },
@@ -92,18 +116,22 @@
     "tp-link-tl-wr741n-nd-v5": { "id": "tp-link-tl-wr741n-nd-v5", "name": "TL-WR741N/ND v5", "manufacturer": "TP-Link" },
     "tp-link-tl-wr743n-nd-v1": { "id": "tp-link-tl-wr743n-nd-v1", "name": "TL-WR743N/ND v1", "manufacturer": "TP-Link" },
     "tp-link-tl-wr743n-nd-v2": { "id": "tp-link-tl-wr743n-nd-v2", "name": "TL-WR743N/ND v2", "manufacturer": "TP-Link" },
-    "tp-link-tl-wr841n-nd-v10": { "id": "tp-link-tl-wr841n-nd-v10", "name": "TL-WR841N/ND v10", "manufacturer": "TP-Link" },
     "tp-link-tl-wr841n-nd-v3": { "id": "tp-link-tl-wr841n-nd-v3", "name": "TL-WR841N/ND v3", "manufacturer": "TP-Link" },
     "tp-link-tl-wr841n-nd-v5": { "id": "tp-link-tl-wr841n-nd-v5", "name": "TL-WR841N/ND v5", "manufacturer": "TP-Link" },
     "tp-link-tl-wr841n-nd-v7": { "id": "tp-link-tl-wr841n-nd-v7", "name": "TL-WR841N/ND v7", "manufacturer": "TP-Link" },
     "tp-link-tl-wr841n-nd-v8": { "id": "tp-link-tl-wr841n-nd-v8", "name": "TL-WR841N/ND v8", "manufacturer": "TP-Link" },
     "tp-link-tl-wr841n-nd-v9": { "id": "tp-link-tl-wr841n-nd-v9", "name": "TL-WR841N/ND v9", "manufacturer": "TP-Link" },
+    "tp-link-tl-wr841n-nd-v10": { "id": "tp-link-tl-wr841n-nd-v10", "name": "TL-WR841N/ND v10", "manufacturer": "TP-Link" },
+    "tp-link-tl-wr841n-nd-v11": { "id": "tp-link-tl-wr841n-nd-v11", "name": "TL-WR841N/ND v11", "manufacturer": "TP-Link" },
+    "tp-link-tl-wr841n-nd-v12": { "id": "tp-link-tl-wr841n-nd-v12", "name": "TL-WR841N/ND v12", "manufacturer": "TP-Link" },
     "tp-link-tl-wr842n-nd-v1": { "id": "tp-link-tl-wr842n-nd-v1", "name": "TL-WR842N/ND v1", "manufacturer": "TP-Link" },
     "tp-link-tl-wr842n-nd-v2": { "id": "tp-link-tl-wr842n-nd-v2", "name": "TL-WR842N/ND v2", "manufacturer": "TP-Link" },
+    "tp-link-tl-wr842n-nd-v3": { "id": "tp-link-tl-wr842n-nd-v3", "name": "TL-WR842N/ND v3", "manufacturer": "TP-Link" },
     "tp-link-tl-wr843n-nd-v1": { "id": "tp-link-tl-wr843n-nd-v1", "name": "TL-WR843N/ND v1", "manufacturer": "TP-Link" },
     "tp-link-tl-wr940n-nd-v1": { "id": "tp-link-tl-wr940n-nd-v1", "name": "TL-WR940N/ND v1", "manufacturer": "TP-Link" },
     "tp-link-tl-wr940n-nd-v2": { "id": "tp-link-tl-wr940n-nd-v2", "name": "TL-WR940N/ND v2", "manufacturer": "TP-Link" },
     "tp-link-tl-wr940n-nd-v3": { "id": "tp-link-tl-wr940n-nd-v3", "name": "TL-WR940N/ND v3", "manufacturer": "TP-Link" },
+    "tp-link-tl-wr940n-v4": { "id": "tp-link-tl-wr940n-v4", "name": "TL-WR940N/ND v4", "manufacturer": "TP-Link" },
     "tp-link-tl-wr941n-nd-v2": { "id": "tp-link-tl-wr941n-nd-v2", "name": "TL-WR941N/ND v2", "manufacturer": "TP-Link" },
     "tp-link-tl-wr941n-nd-v3": { "id": "tp-link-tl-wr941n-nd-v3", "name": "TL-WR941N/ND v3", "manufacturer": "TP-Link" },
     "tp-link-tl-wr941n-nd-v4": { "id": "tp-link-tl-wr941n-nd-v4", "name": "TL-WR941N/ND v4", "manufacturer": "TP-Link" },
@@ -131,14 +159,15 @@
     "x86-virtualbox": { "id": "x86-virtualbox", "name": "32-Bit x86-PC (VirtualBox Image)", "manufacturer": "(none)", "factorySuffix": "vdi", "hideSysupgrade": true },
     "x86-vmware": { "id": "x86-vmware", "name": "32-Bit x86-PC (VMWare Image)", "manufacturer": "(none)", "factorySuffix": "vmdk", "hideSysupgrade": true },
     "x86-kvm": { "id": "x86-kvm", "name": "KVM Virtual Machine", "manufacturer": "(none)", "sysupgradeSuffix": "img.gz", "factorySuffix": "img.gz" },
-    "x86-xen": { "id": "x86-xen", "name": "XEN Virtual Machine", "manufacturer": "(none)", "sysupgradeSuffix": "img.gz", "factorySuffix": "img.gz" }
+    "raspberry-pi": { "id": "raspberry-pi", "name": "Pi-1", "manufacturer": "Raspberry", "sysupgradeSuffix": "img.gz", "factorySuffix": "img.gz" },
+    "raspberry-pi-2": { "id": "raspberry-pi-2", "name": "Pi-2", "manufacturer": "Raspberry", "sysupgradeSuffix": "img.gz", "factorySuffix": "img.gz" }
   },
 
-  "name": "Freifunk GL",
-  
+  "name": "Freifunk Düsseldorf-Flingern Gluon 2016.2.5.2",
+
   "version": {
-    "id": "20160227",
-    "shortname": "20160227",
-    "url": "http://images.ffgl.eu/{{selectedSite}}/stable/{{selectedMode}}/gluon-ffgl-{{selectedSite+'-'+config.version.id}}-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade.'+(parse(selectedRouter).sysupgradeSuffix?parse(selectedRouter).sysupgradeSuffix:'bin'):'.'+(parse(selectedRouter).factorySuffix?parse(selectedRouter).factorySuffix:'bin')}}"
+    "id": "2017052804-sta",
+    "shortname": "2017052804",
+    "url": "http://images.ffdus.de/{{selectedSite}}/{{selectedMode}}/gluon-ffdus-{{config.version.id}}-{{parse(selectedRouter).id}}{{selectedMode=='sysupgrade'?'-sysupgrade.'+(parse(selectedRouter).sysupgradeSuffix?parse(selectedRouter).sysupgradeSuffix:'bin'):'.'+(parse(selectedRouter).factorySuffix?parse(selectedRouter).factorySuffix:'bin')}}"
   }
 }
